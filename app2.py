@@ -4,6 +4,7 @@ from google_play_scraper import app
 import pandas as pd
 import numpy as np
 import joblib
+from plotly import express as px
 import nltk
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
@@ -109,8 +110,9 @@ def main():
         positive_sentiments = processed_data[processed_data['sentiment_rating'] == 1]
         negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
 
-        st.write(f"Jumlah Sentimen Positif: {len(positive_sentiments)}")
-        st.write(f"Jumlah Sentimen Negatif: {len(negative_sentiments)}")
+        # Membuat pie chart
+        fig = px.pie(values=[positive_sentiments, negative_sentiments], names=['Positif', 'Negatif'])
+        st.plotly_chart(fig, use_container_width=True)
         
         # Display 3 examples of positive and negative comments
         st.write("Contoh Komentar Positif:")
