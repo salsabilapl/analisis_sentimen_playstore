@@ -58,7 +58,7 @@ def preprocess_text(data):
 # Function to predict sentiment
 def predict_sentiment(review_input):
     # Load Naive Bayes model from pickle file
-    model_nb = joblib.load("model_naive_bayes(1).sav")
+    model_nb = joblib.load("model_naive_bayes.pkl")
 
     # Predict sentiment using the loaded model
     predicted_sentiment = model_nb.predict(review_input)
