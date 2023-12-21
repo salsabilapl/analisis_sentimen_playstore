@@ -98,14 +98,15 @@ def main():
         
         # Prediction part
         st.write("Prediksi sentimen:")
-        '''for idx, row in processed_data.iterrows():
-            predicted_sentiment = predict_sentiment([row['processed_text']])
-            if predicted_sentiment == 1:
-                st.write(f"Review {idx+1}: Positif")
-            else:
-                st.write(f"Review {idx+1}: Negatif")'''
-        review_input="aplikasinya jelek"
-        predict_sentiment(review_input)
+        
+        # Mapping the ratings
+        data['sentiment_rating'] = np.where(data.label > 3,1,0)
+        
+        ## Removing neutral reviews
+        data = data[data.label != 3]
+        
+        # Printing the counts of each class
+        data['sentiment_rating'].value_counts()
 
 
 if __name__ == "__main__":
