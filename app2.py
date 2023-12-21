@@ -110,6 +110,10 @@ def main():
         
         processed_data = processed_data[processed_data.label != 3]
         for idx, row in processed_data.iterrows():
+            # Debug prints to check 'processed_text' column
+            st.write(row)
+            st.write(processed_data.columns)
+            
             predicted_sentiment = predict_sentiment([row['processed_text']])
             if predicted_sentiment == 1:
                 st.write(f"Review {idx+1}: Positif")
