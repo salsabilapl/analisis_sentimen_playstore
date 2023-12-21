@@ -111,10 +111,9 @@ def main():
         negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
 
         # Membuat pie chart
-
-        # Pie chart showing sentiment distribution
-        fig = px.pie(values=[positive_count, negative_count], names=['Positif', 'Negatif'], title='Distribusi Sentimen')
-        st.plotly_chart(fig)
+        # Creating Pie Chart
+        fig = px.pie(values=[positive_count, negative_count], names=['Positif', 'Negatif'], title='Perbandingan Sentimen')
+        st.plotly_chart(fig, use_container_width=True)
         
         # Display 3 examples of positive and negative comments
         st.write("Contoh Komentar Positif:")
