@@ -5,3 +5,4 @@ numpy==1.21.2
 Sastrawi==1.0.1
 joblib==1.0.1
 streamlit==0.88.0
+openpyxl
