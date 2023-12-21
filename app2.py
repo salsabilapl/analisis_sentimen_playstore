@@ -4,7 +4,7 @@ from google_play_scraper import app
 import pandas as pd
 import numpy as np
 import joblib
-from plotly import express as px
+import plotly as px
 import nltk
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
