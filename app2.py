@@ -100,25 +100,26 @@ def main():
         st.write("Prediksi sentimen:")
         
         # Mapping the ratings
-        data['sentiment_rating'] = np.where(data.label > 3,1,0)
+        processed_data['sentiment_rating'] = np.where(processed_data.label > 3, 1, 0)
         
         ## Removing neutral reviews
-        data = data[data.label != 3]
-        
-        # Printing the counts of each class
-        #st.write(data['sentiment_rating'].value_counts())
-        
         processed_data = processed_data[processed_data.label != 3]
-        for idx, row in processed_data.iterrows():
-            # Debug prints to check 'processed_text' column
-            st.write(row)
-            st.write(processed_data.columns)
-            
-            predicted_sentiment = predict_sentiment([row['processed_text']])
-            if predicted_sentiment == 1:
-                st.write(f"Review {idx+1}: Positif")
-            else:
-                st.write(f"Review {idx+1}: Negatif")
+        
+        # Get the counts of positive and negative sentiments
+        positive_sentiments = processed_data[processed_data['sentiment_rating'] == 1]
+        negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
+
+        st.write(f"Jumlah Sentimen Positif: {len(positive_sentiments)}")
+        st.write(f"Jumlah Sentimen Negatif: {len(negative_sentiments)}")
+        
+        # Display 3 examples of positive and negative comments
+        st.write("Contoh Komentar Positif:")
+        for idx, row in positive_sentiments.head(3).iterrows():
+            st.write(row['processed_text'])
+        
+        st.write("Contoh Komentar Negatif:")
+        for idx, row in negative_sentiments.head(3).iterrows():
+            st.write(row['processed_text'])
 
 
 if __name__ == "__main__":
