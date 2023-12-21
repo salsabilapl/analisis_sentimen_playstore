@@ -107,7 +107,8 @@ def main():
         
         # Printing the counts of each class
         #st.write(data['sentiment_rating'].value_counts())
-
+        
+        processed_data = processed_data[processed_data.label != 3]
         for idx, row in processed_data.iterrows():
             predicted_sentiment = predict_sentiment([row['processed_text']])
             if predicted_sentiment == 1:
