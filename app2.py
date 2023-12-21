@@ -98,12 +98,14 @@ def main():
         
         # Prediction part
         st.write("Prediksi sentimen:")
-        for idx, row in processed_data.iterrows():
+        '''for idx, row in processed_data.iterrows():
             predicted_sentiment = predict_sentiment([row['processed_text']])
             if predicted_sentiment == 1:
                 st.write(f"Review {idx+1}: Positif")
             else:
-                st.write(f"Review {idx+1}: Negatif")
+                st.write(f"Review {idx+1}: Negatif")'''
+        review_input="aplikasinya jelek"
+        predict_sentiment(review_input)
 
 
 if __name__ == "__main__":
