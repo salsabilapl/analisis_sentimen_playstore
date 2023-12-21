@@ -6,4 +6,4 @@ Sastrawi==1.0.1
 joblib==1.0.1
 streamlit==0.88.0
 openpyxl
-sklearn
+scikit-learn
