@@ -106,7 +106,14 @@ def main():
         data = data[data.label != 3]
         
         # Printing the counts of each class
-        st.write(data['sentiment_rating'].value_counts())
+        #st.write(data['sentiment_rating'].value_counts())
+
+        for idx, row in processed_data.iterrows():
+            predicted_sentiment = predict_sentiment([row['processed_text']])
+            if predicted_sentiment == 1:
+                st.write(f"Review {idx+1}: Positif")
+            else:
+                st.write(f"Review {idx+1}: Negatif")
 
 
 if __name__ == "__main__":
