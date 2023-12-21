@@ -106,7 +106,7 @@ def main():
         data = data[data.label != 3]
         
         # Printing the counts of each class
-        data['sentiment_rating'].value_counts()
+        st.write(data['sentiment_rating'].value_counts())
 
 
 if __name__ == "__main__":
