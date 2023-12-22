@@ -121,11 +121,11 @@ def main():
 
         # Display 3 examples of positive and negative comments in a table format
         st.write("Contoh Komentar Positif:")
-        positive_samples = positive_sentiments.head(3)[['processed_text']]
+        positive_samples = positive_sentiments.head(5)[['processed_text']]
         st.table(positive_samples)
         
         st.write("Contoh Komentar Negatif:")
-        negative_samples = negative_sentiments.head(3)[['processed_text']]
+        negative_samples = negative_sentiments.head(5)[['processed_text']]
         st.table(negative_samples)
 
 
