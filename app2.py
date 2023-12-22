@@ -119,7 +119,7 @@ def main():
         fig.update_traces(marker=dict(colors=['#0000BB', '#748BFB']))  # Ubah kode warna sesuai keinginan Anda
         st.plotly_chart(fig, use_container_width=True)
 
-        st.info("Jumlah Sentimen")
+        st.markdown("<h3 style='text-align: center;'>Jumlah Sentimen</h3>", unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:
             st.info(f"**Sentimen Positif:** {positive_count}")
