@@ -69,6 +69,8 @@ def predict_sentiment(review_input):
 # Streamlit app
 def main():
     st.title('Sentiment Analysis Pada Ulasan Aplikasi Playstore')
+
+    st.image('playstore.png', caption='Gambar Playstrore', use_column_width=True)
     
     app_link = st.text_input("Masukkan link Google Play Store:")
     
