@@ -115,7 +115,8 @@ def main():
         negative_count = len(negative_sentiments)
         
         # Creating Pie Chart with custom colors
-        fig = px.pie(values=[positive_count, negative_count], names=['Positif', 'Negatif'], title='Perbandingan Sentimen')
+        st.markdown("<h3 style='text-align: center;'>Perbandingan Sentimen</h3>", unsafe_allow_html=True)
+        fig = px.pie(values=[positive_count, negative_count], names=['Positif', 'Negatif'])
         fig.update_traces(marker=dict(colors=['#0000BB', '#748BFB']))  # Ubah kode warna sesuai keinginan Anda
         st.plotly_chart(fig, use_container_width=True)
 
