@@ -119,14 +119,14 @@ def main():
         fig.update_traces(marker=dict(colors=['#0000BB', '#748BFB']))  # Ubah kode warna sesuai keinginan Anda
         st.plotly_chart(fig, use_container_width=True)
 
-        # Display 3 examples of positive and negative comments
+        # Display 3 examples of positive and negative comments in a table format
         st.write("Contoh Komentar Positif:")
-        for idx, row in positive_sentiments.head(3).iterrows():
-            st.write(row['processed_text'])
+        positive_samples = positive_sentiments.head(3)[['processed_text']]
+        st.table(positive_samples)
         
         st.write("Contoh Komentar Negatif:")
-        for idx, row in negative_sentiments.head(3).iterrows():
-            st.write(row['processed_text'])
+        negative_samples = negative_sentiments.head(3)[['processed_text']]
+        st.table(negative_samples)
 
 
 if __name__ == "__main__":
