@@ -107,7 +107,8 @@ def main():
     
         # Tambahkan kolom hasil prediksi ke dalam DataFrame processed_data
         processed_data['predicted_sentiment'] = predicted_sentiments
-               
+        
+        predicted_sentiments
         
         # Mapping the ratings
         processed_data['sentiment_rating'] = np.where(processed_data.label > 3, 1, 0)
