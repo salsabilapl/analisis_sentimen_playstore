@@ -129,6 +129,7 @@ def main():
 
 
         # Display 3 examples of positive and negative comments in a table format
+        st.markdown("<h3 style='text-align: center;'>Contoh Komentar</h3>", unsafe_allow_html=True)
         st.write("Contoh Komentar Positif:")
         positive_samples = positive_sentiments.head(5)[['processed_text']]
         st.table(positive_samples)
