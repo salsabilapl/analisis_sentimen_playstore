@@ -70,7 +70,7 @@ def predict_sentiment(review_input):
 def main():
     st.title('Sentiment Analysis Pada Ulasan Aplikasi Playstore')
 
-    st.image('playstore.png', use_column_width=500)
+    st.image('playstore.png', use_column_width=250)
     
     app_link = st.text_input("Masukkan link Google Play Store:")
     
