@@ -69,6 +69,16 @@ def predict_sentiment(review_input):
 # Streamlit app
 def main():
     st.title('Sentiment Analysis Pada Ulasan Aplikasi Playstore')
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #f0f0f0; /* Ubah kode warna background sesuai keinginan Anda */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
     st.image('playstore.png', use_column_width=250)
     
