@@ -90,12 +90,12 @@ def main():
 
         data = data.rename(columns={'content': 'ulasan', 'score': 'label'})
 
-        st.write("Data awal:")
-        st.write(data.head())
+        #st.write("Data awal:")
+        #st.write(data.head())
 
         processed_data = preprocess_text(data)
-        st.write("Data setelah preprocessing:")
-        st.write(processed_data.head())
+        #st.write("Data setelah preprocessing:")
+        #st.write(processed_data.head())
         
         # Prediction part
         st.write("Prediksi sentimen:")
