@@ -101,6 +101,13 @@ def main():
         
         # Prediction part
         #st.write("Prediksi sentimen:")
+
+        processed_text = processed_data['processed_text']
+        predicted_sentiments = predict_sentiment(processed_text)
+    
+        # Tambahkan kolom hasil prediksi ke dalam DataFrame processed_data
+        processed_data['predicted_sentiment'] = predicted_sentiments
+               
         
         # Mapping the ratings
         processed_data['sentiment_rating'] = np.where(processed_data.label > 3, 1, 0)
