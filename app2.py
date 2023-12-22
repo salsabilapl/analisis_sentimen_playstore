@@ -98,7 +98,7 @@ def main():
         #st.write(processed_data.head())
         
         # Prediction part
-        st.write("Prediksi sentimen:")
+        #st.write("Prediksi sentimen:")
         
         # Mapping the ratings
         processed_data['sentiment_rating'] = np.where(processed_data.label > 3, 1, 0)
