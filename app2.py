@@ -112,8 +112,10 @@ def main():
         # Prediction part
         #st.write("Prediksi sentimen:")
 
+        data = processed_data['processed_text'].astype(str)
+        
         tfidf = TfidfVectorizer()
-        tfidf_matrix = tfidf.fit_transform(processed_data['processed_text'])
+        tfidf_matrix = tfidf.fit_transform(data)
 
         predicted_sentiments = predict_sentiment(tfidf_matrix)
 
