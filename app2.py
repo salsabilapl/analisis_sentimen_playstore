@@ -9,6 +9,7 @@ import nltk
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from sklearn.feature_extraction.text import TfidfVectorizer
+from wordcloud import WordCloud
 
 import nltk
 nltk.download('punkt')
@@ -139,7 +140,16 @@ def main():
         st.write("Contoh Komentar Negatif:")
         negative_samples = negative_sentiments.head(5)[['ulasan']]
         st.table(negative_samples)
+
+        word_cloud_text = ''.join(combined_reviews['ulasan'])
+
+        # Show Word Cloud
+        st.subheader('Word Cloud dari Ulasan')
+        word_cloud_text = ''.join(data['processed_text'])
+        wordcloud = WordCloud(max_font_size=100, max_words=100, background_color="white",
+                             scale=10, width=800, height=400).generate(word_cloud_text)
         
+        st.image(wordcloud.to_array())
 
 if __name__ == "__main__":
     main()
