@@ -112,7 +112,7 @@ def main():
         # Prediction part
         #st.write("Prediksi sentimen:")
 
-        coba="Sekarang aplikasi nya super berat padahal spek hp tinggi dan lelet banget sangat mengganggu di saat mau centang untuk chekout harus beberapa kali tap layar dan ini sangat mengesalkan, untuk depelover harap di perbaiki kinerja aplikasi nya agar kembali nyaman saat di gunakan.'
+        coba="Sekarang aplikasi nya super berat padahal spek hp tinggi dan lelet banget sangat mengganggu di saat mau centang untuk chekout harus beberapa kali tap layar dan ini sangat mengesalkan, untuk depelover harap di perbaiki kinerja aplikasi nya agar kembali nyaman saat di gunakan."
 
         predicted_sentiments = predict_sentiment(coba)
         predicted_sentiments
