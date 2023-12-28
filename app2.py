@@ -107,7 +107,7 @@ def main():
 
         processed_data = preprocess_text(data)
         #st.write("Data setelah preprocessing:")
-        #st.write(processed_data.head())
+        st.write(processed_data.head())
         
         # Prediction part
         #st.write("Prediksi sentimen:")
