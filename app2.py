@@ -109,8 +109,8 @@ def main():
         model_nb = joblib.load("model_naive_bayes.pkl")
     
         # Predict sentiment using the loaded model
-        data['predicted_sentiment] = model_nb.predict(data)
-        data['predicted_sentiment]
+        data['predicted_sentiment'] = model_nb.predict(data)
+        data['predicted_sentiment']
 
         '''
         # Get the counts of positive and negative sentiments
