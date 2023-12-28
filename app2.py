@@ -102,19 +102,15 @@ def main():
         
         # Prediction part
 
-        #data = processed_data['processed_text'].astype(str)
-
         # Load Naive Bayes model from pickle file
         model_nb = joblib.load("model_naive_bayes.pkl")
     
         # Predict sentiment using the loaded model
         data['predicted_sentiment'] = model_nb.predict(data['processed_text'])
-        data['predicted_sentiment']
 
-        '''
-        # Get the counts of positive and negative sentiments
-        positive_sentiments = processed_data[processed_data['sentiment_rating'] == 1]
-        negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
+        Get the counts of positive and negative sentiments
+        positive_sentiments = data[data['predicted_sentiment'] == 1]
+        negative_sentiments = data[data['predicted_sentiment'] == 0]
         
         # Get the counts
         positive_count = len(positive_sentiments)
@@ -137,11 +133,11 @@ def main():
         # Display 3 examples of positive and negative comments in a table format
         st.markdown("<h3 style='text-align: center;'>Contoh Komentar</h3>", unsafe_allow_html=True)
         st.write("Contoh Komentar Positif:")
-        positive_samples = positive_sentiments.head(5)[['processed_text']]
+        positive_samples = positive_sentiments.head(5)[['ulasan']]
         st.table(positive_samples)
         
         st.write("Contoh Komentar Negatif:")
-        negative_samples = negative_sentiments.head(5)[['processed_text']]
+        negative_samples = negative_sentiments.head(5)[['ulasan']]
         st.table(negative_samples)
         '''
 
