@@ -103,6 +103,7 @@ def main():
         # Prediction part
 
         data = processed_data['processed_text'].astype(str)
+        data
         
         # Load Naive Bayes model from pickle file
         model_nb = joblib.load("model_naive_bayes.pkl")
