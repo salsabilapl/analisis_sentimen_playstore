@@ -68,7 +68,7 @@ def main():
     menu = st.sidebar.selectbox('-Pilih Menu-', ["🏠 Home","🤖 Sentiment Analysis"])
 
     if menu == '🏠 Home':
-        st.image('sentiment-icon.png', use_column_width=10%)
+        st.image('sentiment-icon.png', use_column_width=10)
         st.info('Selamat Datang', icon="👋")
         st.warning('Aplikasi ini menganalisis ribuan ulasan dari Play Store secara real-time untuk memberikan wawasan yang mendalam mengenai sentimen pengguna terhadap aplikasi yang Anda pilih.', icon="❓")
         st.info('Silakan pilih Sentiment Analysis di sidebar', icon="⬅️")
