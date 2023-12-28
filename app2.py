@@ -63,18 +63,19 @@ def main():
     st.title('Analisis Sentimen pada Ulasan Aplikasi Playstore')
 
     st.sidebar.title("Analisis Sentimen Ulasan Pada Google Play Store")
-    st.sidebar.write("Selamat datang di Aplikasi Analisis Sentimen!")
+    st.sidebar.write("Selamat datang di Aplikasi Analisis Sentimen versi 2.0!")
     st.sidebar.title('Menu')
     menu = st.sidebar.selectbox('-Pilih Menu-', ["🏠 Home","🤖 Sentiment Analysis"])
 
     if menu == '🏠 Home':
         st.markdown("""
             ### Selamat Datang di Aplikasi Sentiment Analysis
-            Silakan pilih 'Sentiment Analysis' di sidebar untuk melakukan analisis sentimen ulasan aplikasi.
             """)
-        st.markdown("""aplikasi ini menganalisis ribuan ulasan dari Google Play Store secara real-time untuk memberikan wawasan yang mendalam mengenai sentimen pengguna terhadap aplikasi yang Anda pilih.""")
+        st.image('sentiment-icon.png', use_column_width=50)
+        st.markdown("""Aplikasi ini menganalisis ribuan ulasan dari Google Play Store secara real-time untuk memberikan wawasan yang mendalam mengenai sentimen pengguna terhadap aplikasi yang Anda pilih.""")
+        st.markdown("""Silakan pilih 'Sentiment Analysis' di sidebar untuk melakukan analisis sentimen ulasan aplikasi.""")
     elif menu=='🤖 Sentiment Analysis':
-        st.image('playstore.png', use_column_width=250)
+        st.image('playstore.png', use_column_width=100)
         
         app_link = st.text_input("Masukkan link Google Play Store:")
         
