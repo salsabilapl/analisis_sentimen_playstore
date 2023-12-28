@@ -60,12 +60,12 @@ def preprocess_text(data):
 
 # Streamlit app
 def main():
-    st.title('Sentiment Analysis Pada Ulasan Aplikasi Playstore')
-    st.sidebar.title('Menu')
-    menu = st.sidebar.selectbox('Menu Aplikasi', ["🏠 Home","🤖 Sentiment Analysis"])
+    st.title('Analisis Sentimen pada Ulasan Aplikasi Playstore')
 
     st.sidebar.title("Analisis Sentimen Ulasan Pada Google Play Store")
     st.sidebar.write("Selamat datang di Aplikasi Analisis Sentimen!")
+    st.sidebar.title('Menu')
+    menu = st.sidebar.selectbox('-Pilih Menu-', ["🏠 Home","🤖 Sentiment Analysis"])
 
     if menu == '🏠 Home':
         st.markdown("""
