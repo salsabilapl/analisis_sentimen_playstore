@@ -118,7 +118,7 @@ def main():
 
         predicted_sentiments
 
-        
+        '''
         # Get the counts of positive and negative sentiments
         positive_sentiments = processed_data[processed_data['sentiment_rating'] == 1]
         negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
