@@ -73,7 +73,8 @@ def main():
             """)
         st.image('sentiment-icon.png', use_column_width=1000)
         st.markdown("""Aplikasi ini menganalisis ribuan ulasan dari Google Play Store secara real-time untuk memberikan wawasan yang mendalam mengenai sentimen pengguna terhadap aplikasi yang Anda pilih.""")
-        st.info('Silakan pilih Sentiment Analysis di sidebar untuk melakukan analisis sentimen ulasan aplikasi.', icon="ℹ️")
+        #st.info('Silakan pilih Sentiment Analysis di sidebar untuk melakukan analisis sentimen ulasan aplikasi.', icon="ℹ️")
+        st.info('This is a purely informational message', icon="ℹ️")
     elif menu=='🤖 Sentiment Analysis':
         st.image('playstore.png', use_column_width=100)
         
