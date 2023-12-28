@@ -8,3 +8,4 @@ streamlit==0.88.0
 openpyxl
 scikit-learn
 plotly
+wordcloud
