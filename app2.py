@@ -102,14 +102,13 @@ def main():
         
         # Prediction part
 
-        data = processed_data['processed_text'].astype(str)
-        data
-        
+        #data = processed_data['processed_text'].astype(str)
+
         # Load Naive Bayes model from pickle file
         model_nb = joblib.load("model_naive_bayes.pkl")
     
         # Predict sentiment using the loaded model
-        data['predicted_sentiment'] = model_nb.predict(data)
+        data['predicted_sentiment'] = model_nb.predict(data['processed_text'])
         data['predicted_sentiment']
 
         '''
