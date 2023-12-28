@@ -91,7 +91,7 @@ def main():
             lang='id',
             country='id',
             sort=Sort.MOST_RELEVANT,
-            count=2000,
+            count=3000,
             filter_score_with=None
         )
 
@@ -112,6 +112,11 @@ def main():
         # Prediction part
         #st.write("Prediksi sentimen:")
 
+        coba="Sekarang aplikasi nya super berat padahal spek hp tinggi dan lelet banget sangat mengganggu di saat mau centang untuk chekout harus beberapa kali tap layar dan ini sangat mengesalkan, untuk depelover harap di perbaiki kinerja aplikasi nya agar kembali nyaman saat di gunakan.'
+
+        predicted_sentiments = predict_sentiment(coba)
+        predicted_sentiments
+        '''
         data = processed_data['processed_text'].astype(str)
         
         tfidf = TfidfVectorizer()
@@ -121,7 +126,7 @@ def main():
 
         predicted_sentiments
 
-        '''
+        
         # Get the counts of positive and negative sentiments
         positive_sentiments = processed_data[processed_data['sentiment_rating'] == 1]
         negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
