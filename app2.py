@@ -108,7 +108,7 @@ def main():
         # Predict sentiment using the loaded model
         data['predicted_sentiment'] = model_nb.predict(data['processed_text'])
 
-        Get the counts of positive and negative sentiments
+        #Get the counts of positive and negative sentiments
         positive_sentiments = data[data['predicted_sentiment'] == 1]
         negative_sentiments = data[data['predicted_sentiment'] == 0]
         
