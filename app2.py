@@ -114,7 +114,7 @@ def main():
 
         data = processed_data['processed_text'].astype(str)
         
-        predicted_sentiments = predict_sentiment(tfidf_matrix)
+        predicted_sentiments = predict_sentiment(data)
 
         predicted_sentiments
 
