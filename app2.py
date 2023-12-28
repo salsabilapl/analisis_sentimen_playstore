@@ -8,7 +8,7 @@ from plotly import express as px
 import nltk
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 import nltk
 nltk.download('punkt')
@@ -111,13 +111,15 @@ def main():
         
         # Prediction part
         #st.write("Prediksi sentimen:")
-        
-        # Mapping the ratings
-        processed_data['sentiment_rating'] = np.where(processed_data.label > 3, 1, 0)
-        
-        ## Removing neutral reviews
-        processed_data = processed_data[processed_data.label != 3]
-        
+
+        tfidf = TfidfVectorizer()
+        tfidf_matrix = tfidf.fit_transform(processed_data['processed_text'])
+
+        predicted_sentiments = predict_sentiment(tfidf_matrix)
+
+        predicted_sentiments
+
+        '''
         # Get the counts of positive and negative sentiments
         positive_sentiments = processed_data[processed_data['sentiment_rating'] == 1]
         negative_sentiments = processed_data[processed_data['sentiment_rating'] == 0]
@@ -149,6 +151,7 @@ def main():
         st.write("Contoh Komentar Negatif:")
         negative_samples = negative_sentiments.head(5)[['processed_text']]
         st.table(negative_samples)
+        '''
 
 
 if __name__ == "__main__":
