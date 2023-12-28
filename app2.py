@@ -56,15 +56,6 @@ def preprocess_text(data):
     
     return data
 
-# Function to predict sentiment
-def predict_sentiment(review_input):
-    # Load Naive Bayes model from pickle file
-    model_nb = joblib.load("model_naive_bayes.pkl")
-
-    # Predict sentiment using the loaded model
-    predicted_sentiment = model_nb.predict(review_input)
-    return predicted_sentiment
-
 
 # Streamlit app
 def main():
@@ -110,13 +101,15 @@ def main():
         st.write(processed_data.head())
         
         # Prediction part
-        #st.write("Prediksi sentimen:")
 
         data = processed_data['processed_text'].astype(str)
         
-        predicted_sentiments = predict_sentiment(data)
-
-        predicted_sentiments
+        # Load Naive Bayes model from pickle file
+        model_nb = joblib.load("model_naive_bayes.pkl")
+    
+        # Predict sentiment using the loaded model
+        predicted_sentiment = model_nb.predict(data)
+        predicted_sentiment
 
         '''
         # Get the counts of positive and negative sentiments
