@@ -68,8 +68,8 @@ def main():
     menu = st.sidebar.selectbox('-Pilih Menu-', ["🏠 Home","🤖 Sentiment Analysis"])
 
     if menu == '🏠 Home':
-        st.markdown(:blue["""
-            ### Selamat Datang di Aplikasi Sentiment Analysis
+        st.markdown(""":blue[
+            ### Selamat Datang di Aplikasi Sentiment Analysis]
             """])
         st.image('sentiment-icon.png', use_column_width=10)
         st.markdown("""Aplikasi ini menganalisis ribuan ulasan dari Google Play Store secara real-time untuk memberikan wawasan yang mendalam mengenai sentimen pengguna terhadap aplikasi yang Anda pilih.""")
