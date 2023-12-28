@@ -61,95 +61,97 @@ def preprocess_text(data):
 # Streamlit app
 def main():
     st.title('Sentiment Analysis Pada Ulasan Aplikasi Playstore')
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #f0f0f0; /* Ubah kode warna background sesuai keinginan Anda */
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    st.sidebar.title('Menu')
+    menu = st.sidebar.radio('Menu Aplikasi', ["🏠 Home","🤖 Sentiment Analysis"])
 
-    st.image('playstore.png', use_column_width=250)
+    st.sidebar.title("Analisis Sentimen Ulasan Pada Google Play Store")
+    st.sidebar.write("Selamat datang di Aplikasi Analisis Sentimen!")
+
+    if menu == '🏠 Home':
+        st.markdown("""
+            ### Selamat Datang di Aplikasi Sentiment Analysis
+            Silakan pilih 'Sentiment Analysis' di sidebar untuk melakukan analisis sentimen ulasan aplikasi.
+            """)
+        st.markdown("""aplikasi ini menganalisis ribuan ulasan dari Google Play Store secara real-time untuk memberikan wawasan yang mendalam mengenai sentimen pengguna terhadap aplikasi yang Anda pilih.""")
+    elif menu=='🤖 Sentiment Analysis':
+        st.image('playstore.png', use_column_width=250)
+        
+        app_link = st.text_input("Masukkan link Google Play Store:")
+        
+        if st.button("Proses Link"):
+            app_id = app_link.split('id=')[1].split('&')[0]
+            result, continuation_token = reviews(
+                app_id,
+                lang='id',
+                country='id',
+                sort=Sort.MOST_RELEVANT,
+                count=3000,
+                filter_score_with=None
+            )
     
-    app_link = st.text_input("Masukkan link Google Play Store:")
+            data = pd.DataFrame(np.array(result), columns=['review'])
+            data = data.join(pd.DataFrame(data.pop('review').tolist()))
     
-    if st.button("Proses Link"):
-        app_id = app_link.split('id=')[1].split('&')[0]
-        result, continuation_token = reviews(
-            app_id,
-            lang='id',
-            country='id',
-            sort=Sort.MOST_RELEVANT,
-            count=3000,
-            filter_score_with=None
-        )
-
-        data = pd.DataFrame(np.array(result), columns=['review'])
-        data = data.join(pd.DataFrame(data.pop('review').tolist()))
-
-        data = data[['content', 'score']]
-
-        data = data.rename(columns={'content': 'ulasan', 'score': 'label'})
-
-        #st.write("Data awal:")
-        #st.write(data.head())
-
-        processed_data = preprocess_text(data)
-        #st.write("Data setelah preprocessing:")
-        #st.write(processed_data.head())
-        
-        # Prediction part
-
-        # Load Naive Bayes model from pickle file
-        model_nb = joblib.load("model_naive_bayes.pkl")
+            data = data[['content', 'score']]
     
-        # Predict sentiment using the loaded model
-        data['predicted_sentiment'] = model_nb.predict(data['processed_text'])
-
-        #Get the counts of positive and negative sentiments
-        positive_sentiments = data[data['predicted_sentiment'] == 1]
-        negative_sentiments = data[data['predicted_sentiment'] == 0]
+            data = data.rename(columns={'content': 'ulasan', 'score': 'label'})
+    
+            #st.write("Data awal:")
+            #st.write(data.head())
+    
+            processed_data = preprocess_text(data)
+            #st.write("Data setelah preprocessing:")
+            #st.write(processed_data.head())
+            
+            # Prediction part
+    
+            # Load Naive Bayes model from pickle file
+            model_nb = joblib.load("model_naive_bayes.pkl")
         
-        # Get the counts
-        positive_count = len(positive_sentiments)
-        negative_count = len(negative_sentiments)
-        
-        # Creating Pie Chart with custom colors
-        st.markdown("<h3 style='text-align: center;'>Perbandingan Sentimen</h3>", unsafe_allow_html=True)
-        fig = px.pie(values=[positive_count, negative_count], names=['Positif', 'Negatif'])
-        fig.update_traces(marker=dict(colors=['#0000BB', '#748BFB']))  # Ubah kode warna sesuai keinginan Anda
-        st.plotly_chart(fig, use_container_width=True)
-
-        st.markdown("<h3 style='text-align: center;'>Jumlah Sentimen</h3>", unsafe_allow_html=True)
-        col1, col2 = st.columns(2)
-        with col1:
-            st.info(f"**Sentimen Positif:** {positive_count}")
-        with col2:
-            st.info(f"**Sentimen Negatif:** {negative_count}")
-
-
-        # Display 3 examples of positive and negative comments in a table format
-        st.markdown("<h3 style='text-align: center;'>Contoh Komentar</h3>", unsafe_allow_html=True)
-        st.write("Contoh Komentar Positif:")
-        positive_samples = positive_sentiments.head(5)[['ulasan']]
-        st.table(positive_samples)
-        
-        st.write("Contoh Komentar Negatif:")
-        negative_samples = negative_sentiments.head(5)[['ulasan']]
-        st.table(negative_samples)
-
-        word_cloud_text = ''.join(data['ulasan'])
-
-        # Show Word Cloud
-        st.subheader('Word Cloud dari Ulasan')
-        word_cloud_text = ''.join(data['processed_text'])
-        wordcloud = WordCloud(max_font_size=100, max_words=100, background_color="white",
-                             scale=10, width=800, height=400).generate(word_cloud_text)
-        
-        st.image(wordcloud.to_array())
+            # Predict sentiment using the loaded model
+            data['predicted_sentiment'] = model_nb.predict(data['processed_text'])
+    
+            #Get the counts of positive and negative sentiments
+            positive_sentiments = data[data['predicted_sentiment'] == 1]
+            negative_sentiments = data[data['predicted_sentiment'] == 0]
+            
+            # Get the counts
+            positive_count = len(positive_sentiments)
+            negative_count = len(negative_sentiments)
+            
+            # Creating Pie Chart with custom colors
+            st.markdown("<h3 style='text-align: center;'>Perbandingan Sentimen</h3>", unsafe_allow_html=True)
+            fig = px.pie(values=[positive_count, negative_count], names=['Positif', 'Negatif'])
+            fig.update_traces(marker=dict(colors=['#0000BB', '#748BFB']))  # Ubah kode warna sesuai keinginan Anda
+            st.plotly_chart(fig, use_container_width=True)
+    
+            st.markdown("<h3 style='text-align: center;'>Jumlah Sentimen</h3>", unsafe_allow_html=True)
+            col1, col2 = st.columns(2)
+            with col1:
+                st.info(f"**Sentimen Positif:** {positive_count}")
+            with col2:
+                st.info(f"**Sentimen Negatif:** {negative_count}")
+    
+    
+            # Display 3 examples of positive and negative comments in a table format
+            st.markdown("<h3 style='text-align: center;'>Contoh Komentar</h3>", unsafe_allow_html=True)
+            st.write("Contoh Komentar Positif:")
+            positive_samples = positive_sentiments.head(5)[['ulasan']]
+            st.table(positive_samples)
+            
+            st.write("Contoh Komentar Negatif:")
+            negative_samples = negative_sentiments.head(5)[['ulasan']]
+            st.table(negative_samples)
+    
+            word_cloud_text = ''.join(data['ulasan'])
+    
+            # Show Word Cloud
+            st.subheader('Word Cloud dari Ulasan')
+            word_cloud_text = ''.join(data['processed_text'])
+            wordcloud = WordCloud(max_font_size=100, max_words=100, background_color="white",
+                                 scale=10, width=800, height=400).generate(word_cloud_text)
+            
+            st.image(wordcloud.to_array())
 
 if __name__ == "__main__":
     main()
