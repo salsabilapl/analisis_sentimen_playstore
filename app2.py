@@ -139,8 +139,7 @@ def main():
         st.write("Contoh Komentar Negatif:")
         negative_samples = negative_sentiments.head(5)[['ulasan']]
         st.table(negative_samples)
-        '''
-
+        
 
 if __name__ == "__main__":
     main()
