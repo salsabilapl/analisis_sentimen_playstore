@@ -141,7 +141,7 @@ def main():
         negative_samples = negative_sentiments.head(5)[['ulasan']]
         st.table(negative_samples)
 
-        word_cloud_text = ''.join(combined_reviews['ulasan'])
+        word_cloud_text = ''.join(data['ulasan'])
 
         # Show Word Cloud
         st.subheader('Word Cloud dari Ulasan')
