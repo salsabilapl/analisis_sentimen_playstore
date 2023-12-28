@@ -62,7 +62,6 @@ def preprocess_text(data):
 def main():
     st.title('Analisis Sentimen pada Ulasan Aplikasi Playstore')
 
-    st.sidebar.title("Analisis Sentimen Ulasan Pada Google Play Store")
     st.sidebar.write("Selamat datang di Aplikasi Analisis Sentimen versi 2.0!")
     st.sidebar.title('Menu')
     menu = st.sidebar.selectbox('-Pilih Menu-', ["🏠 Home","🤖 Sentiment Analysis"])
